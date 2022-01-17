@@ -8,6 +8,6 @@ const middle = function(array) {
     result.push(array[Math.floor(array.length/2)]);
   }
   return result;
-}
+};
 
 module.exports = middle; 
