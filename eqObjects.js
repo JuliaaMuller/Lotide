@@ -29,32 +29,37 @@ const eqArrays = function (array1, array2) {
 
 
 const eqObjects = function(object1, object2) {
-  let keysList1 = Object.keys(object1);
-  keysList1 = keysList1.sort();
-  let keysList2 = Object.keys(object2);
-  keysList2 = keysList2.sort();
-  let result = true 
- if (keysList1.length !== keysList2.length) {
-   result = false;
- }
- else {
-  for (let i = 0; i < keysList1.length; i++) {
-    let list1 = keysList1[i]
-    if ()
-    else if (Array.isArray(list1)) {
-      eqArrays(keysList1[i], keysList2[i]);
+  const keysList1 = Object.keys(object1);
+  const keysList2 = Object.keys(object2);
+  let result = true;
+  if (keysList1.length !== keysList2.length) {
+    return false;
+
+  } else {
+    for (let keys of keysList1) {
+      if (!object2[keys]){
+        return false
+      }
+      if(Array.isArray(object1[keys])) {
+        if(!eqArrays(object1[keys], object2[keys])) {
+          return false
+        }
+      } else {
+        if (object1[keys] !== object2[keys]) {
+          return false
+        }
+      }
     }
-    else if (keysList1[i] !== keysList2[i]) {
-        result = false;
-    }
-    }  
+    return result;
   }
- 
-return result
 };
 
 const cd = { c: "1", d: ["2", 3] };
 const dc = { d: ["2", 3], c: "1" };
+const da = { d: ["2", 3], c: "2" };
 
+console.log(eqObjects(cd, dc))
+console.log(eqObjects(cd, da))
 
-assertEqual(eqObjects(cd, dc),true)
+assertEqual(eqObjects(cd, dc), true)
+assertEqual(eqObjects(cd, da), false)

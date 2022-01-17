@@ -19,3 +19,4 @@ const countLetters = function(strings) {
   }
   
 console.log(countLetters("lighthouse in the house"))
+assertEqual(countLetters("lighthouse in the house")["h"], 4)

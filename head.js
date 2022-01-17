@@ -16,5 +16,5 @@ final = result
   return final
   
 }
-assertEqual(head([]), 5);
-assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");
+assertEqual(head([]), 5); //false
+assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello"); //true
